@@ -27,11 +27,11 @@ class MyApp extends StatelessWidget {
             ),
             //对话框操作按钮
             actions: <Widget>[
-              FlatButton(
+              TextButton(
                 child: Text('确定'),
                 onPressed: () {},
               ),
-              FlatButton(
+              TextButton(
                 child: Text('取消'),
                 onPressed: () {},
               ),

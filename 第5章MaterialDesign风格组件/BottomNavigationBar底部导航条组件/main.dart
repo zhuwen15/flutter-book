@@ -14,10 +14,10 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key}) : super(key: key);
+  MyHomePage({super.key});
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  State<MyHomePage> createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
@@ -45,9 +45,9 @@ class _MyHomePageState extends State<MyHomePage> {
       bottomNavigationBar: BottomNavigationBar(
         items: <BottomNavigationBarItem>[
           //底部导航按钮项 包含图标及文本
-          BottomNavigationBarItem(icon: Icon(Icons.chat), title: Text('信息')),
-          BottomNavigationBarItem(icon: Icon(Icons.contacts), title: Text('通讯录')),
-          BottomNavigationBarItem(icon: Icon(Icons.account_circle), title: Text('发现')),
+          BottomNavigationBarItem(icon: Icon(Icons.chat), label: '信息'),
+          BottomNavigationBarItem(icon: Icon(Icons.contacts), label: '通讯录'),
+          BottomNavigationBarItem(icon: Icon(Icons.account_circle), label: '发现'),
         ],
         currentIndex: _selectedIndex,//当前选中项的索引
         fixedColor: Colors.deepPurple,//选项中项的颜色

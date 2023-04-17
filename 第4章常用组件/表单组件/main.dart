@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 void main() => runApp(LoginPage());
 
 class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
+
   @override
-  _LoginPageState createState() => _LoginPageState();
+  State<LoginPage> createState() => _LoginPageState();
 }
 
 class _LoginPageState extends State<LoginPage> {
@@ -13,18 +15,18 @@ class _LoginPageState extends State<LoginPage> {
   GlobalKey<FormState> loginKey = GlobalKey<FormState>();
 
   //用户名
-  String userName;
+  late String userName;
   //密码
-  String password;
+  late String password;
 
   void login() {
     //读取当前的Form状态
     var loginForm = loginKey.currentState;
 
     //验证Form表单
-    if (loginForm.validate()) {
+    if (loginForm != null && loginForm.validate()) {
       loginForm.save();
-      print('userName:' + userName + ' password:' + password);
+      print('userName:$userName password:$password');
     }
   }
 
@@ -48,27 +50,27 @@ class _LoginPageState extends State<LoginPage> {
                     //文本输入框表单组件
                     TextFormField(
                       //装饰器
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         //提示文本
                         labelText: '请输入用户名',
                       ),
                       //接收输入值
                       onSaved: (value) {
-                        userName = value;
+                        userName = value ?? "";
                       },
                       onFieldSubmitted: (value){},
                     ),
                     TextFormField(
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         labelText: '请输入密码',
                       ),
                       obscureText: true,
                       //验证表单方法
                       validator: (value) {
-                        return value.length < 6 ? "密码长度不够6位" : null;
+                        return (value ?? "").length < 6 ? "密码长度不够6位" : null;
                       },
                       onSaved: (value) {
-                        password = value;
+                        password = value ?? "";
                       },
                     ),
                   ],
@@ -80,9 +82,9 @@ class _LoginPageState extends State<LoginPage> {
               width: 340.0,
               height: 42.0,
               //添加登录按钮
-              child: RaisedButton(
+              child: ElevatedButton(
                 onPressed: login,
-                child: Text(
+                child: const Text(
                   '登录',
                   style: TextStyle(
                     fontSize: 18.0,

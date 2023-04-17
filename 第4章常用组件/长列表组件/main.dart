@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
   final List<String> items;
 
   //构造方法用于接收列表数据集
-  MyApp({Key key, @required this.items}) : super(key: key);
+  MyApp({super.key, required this.items});
 
   @override
   Widget build(BuildContext context) {

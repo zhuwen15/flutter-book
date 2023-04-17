@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
 
 void main() => runApp(
-      MaterialApp(
-        title: '图标组件示例',
-        home: LayoutDemo(),
-      ),
-    );
+  const MaterialApp(
+    title: '图标组件示例',
+    home: LayoutDemo(),
+  ),
+);
 
 class LayoutDemo extends StatelessWidget {
+  const LayoutDemo({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('图标组件示例'),
+        title: const Text('图标组件示例'),
       ),
       //添加图标
       body: Icon(
