@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
             highlightElevation: 14.0,
             onPressed: () {
               //点击回调事件 弹出一句提示语句
-              Scaffold.of(context).showSnackBar(SnackBar(
+              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                 content: Text("你点击了FloatingActionButton"),
               ));
             },

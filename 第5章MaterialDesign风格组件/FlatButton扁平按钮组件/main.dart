@@ -9,13 +9,13 @@ class MyApp extends StatelessWidget {
       title: 'Welcome to Flutter',
       home: Scaffold(
         appBar: AppBar(
-          title: Text('FlatButton扁平按钮组件示例'),
+          title: Text('TextButton扁平按钮组件示例'),
         ),
         body: Center(
-          child: FlatButton(
+          child: TextButton(
             onPressed: () {},
             child: Text(
-              'FlatButton',
+              'TextButton',
               style: TextStyle(fontSize: 24.0),
             ),
           ),
