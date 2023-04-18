@@ -5,6 +5,8 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  final _firstPage = FirstPage();
+  final _secondPage = SecondPage();
   //这是整个应用的主组件
   @override
   Widget build(BuildContext context) {
@@ -13,10 +15,11 @@ class MyApp extends StatelessWidget {
       title: 'MaterialApp示例',
       //路由配置
       routes: {
-        '/first': (BuildContext context) => FirstPage(), //添加路由
-        '/second': (BuildContext context) => SecondPage(),
+        //'/': (BuildContext context) => MyHomePage(),
+        '/first': (BuildContext context) => _firstPage, //添加路由
+        '/second': (BuildContext context) => _secondPage,
       },
-      initialRoute: '/first',//初始路由页面为first页面
+      initialRoute: '/',//初始路由页面为first页面
     );
   }
 }
@@ -35,9 +38,15 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text('MaterialApp示例'),
       ),
       body: Center(
-        child: Text(
-          '主页',
-          style: TextStyle(fontSize: 28.0),
+        child: ElevatedButton(
+          onPressed: () {
+            //路由跳转到第二个页面
+            Navigator.pushNamed(context, '/first');
+          },
+          child: Text(
+            '这是主页',
+            style: TextStyle(fontSize: 28.0),
+          ),
         ),
       ),
     );
@@ -53,7 +62,7 @@ class FirstPage extends StatelessWidget {
         title: Text('这是第一页'),
       ),
       body: Center(
-        child: RaisedButton(
+        child: ElevatedButton(
           onPressed: () {
             //路由跳转到第二个页面
             Navigator.pushNamed(context, '/second');
@@ -77,10 +86,10 @@ class SecondPage extends StatelessWidget {
         title: Text('这是第二页'),
       ),
       body: Center(
-        child: RaisedButton(
+        child: ElevatedButton(
           onPressed: () {
             //路由跳转到第一个页面
-            Navigator.pushNamed(context, '/first');
+            Navigator.pop(context); // pushNamed(context, '/first');
           },
           child: Text(
             '这是第二页',

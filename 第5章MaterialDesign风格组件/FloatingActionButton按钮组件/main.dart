@@ -32,8 +32,34 @@ class MyApp extends StatelessWidget {
             highlightElevation: 14.0,
             onPressed: () {
               //点击回调事件 弹出一句提示语句
-              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                content: Text("你点击了FloatingActionButton"),
+              ScaffoldMessenger.of(context).showMaterialBanner(MaterialBanner(
+                content: const Text("你点击了FloatingActionButton",
+                    textAlign: TextAlign.center),
+                actions: [
+                  TextButton(
+                    onPressed: () {
+                      print('###:1');
+                    },
+                    child: Text('取消'),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      print('###:2');
+                      ScaffoldMessenger.of(context).hideCurrentMaterialBanner();
+                    },
+                    child: Text('确定'),
+                  )
+                ],
+              ));
+
+              ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                content: Text(
+                  "你点击了FloatingActionButton",
+                  textAlign: TextAlign.center,
+                ),
+                showCloseIcon: true,
+                closeIconColor: Colors.white,
+                duration: Duration(milliseconds: 20000),
               ));
             },
             mini: false,
