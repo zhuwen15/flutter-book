@@ -1,5 +1,30 @@
 import 'package:flutter/material.dart';
 
+class MyApp extends StatefulWidget {
+  @override
+  State<MyApp> createState() {
+    return _MyAppState();
+  }
+}
+
+class _MyAppState extends State<MyApp> {
+  //导航栏按钮选中对应数据
+  final _widgetOptions = [
+    Text('Index 0: 信息'),
+    Text('Index 1: 通讯录'),
+    Text('Index 2: 发现'),
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(appBar: AppBar(title: Text('AppBar'),),
+        body: ,),
+    );
+  }
+
+}
+
 class TabBarSample extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
