@@ -12,32 +12,55 @@ class MyApp extends StatelessWidget {
       title: 'PopupMenuButton组件示例',
       home: Scaffold(
         appBar: AppBar(
+          leading: Builder(builder: (BuildContext context) {
+            return PopupMenuButton(
+                itemBuilder: (BuildContext context) =>
+                <PopupMenuEntry<ConferenceItem>>[
+                  PopupMenuItem<ConferenceItem>(
+                    value: ConferenceItem.AddMember,
+                    child: Text('添加成员'),
+                  ),
+                  PopupMenuItem<ConferenceItem>(
+                    value: ConferenceItem.AddMember,
+                    child: Text('添加成员'),
+                  ),
+                  PopupMenuItem<ConferenceItem>(
+                    value: ConferenceItem.AddMember,
+                    child: Text('添加成员'),
+                  ),
+                  PopupMenuItem<ConferenceItem>(
+                    value: ConferenceItem.AddMember,
+                    child: Text('添加成员'),
+                  )
+                ]);
+          }),
           title: Text('PopupMenuButton组件示例'),
         ),
         body: Center(
-          child: FlatButton(
+          child: FilledButton(
             onPressed: () {},
             child: PopupMenuButton<ConferenceItem>(
               onSelected: (ConferenceItem result) {},
-              itemBuilder: (BuildContext context) =>//菜单项构造器
-                  <PopupMenuEntry<ConferenceItem>>[
-                    const PopupMenuItem<ConferenceItem>(//菜单项
-                      value: ConferenceItem.AddMember,
-                      child: Text('添加成员'),
-                    ),
-                    const PopupMenuItem<ConferenceItem>(
-                      value: ConferenceItem.LockConference,
-                      child: Text('锁定会议'),
-                    ),
-                    const PopupMenuItem<ConferenceItem>(
-                      value: ConferenceItem.ModifyLayout,
-                      child: Text('修改布局'),
-                    ),
-                    const PopupMenuItem<ConferenceItem>(
-                      value: ConferenceItem.TurnoffAll,
-                      child: Text('挂断所有'),
-                    ),
-                  ],
+              itemBuilder: (BuildContext context) => //菜单项构造器
+              <PopupMenuEntry<ConferenceItem>>[
+                const PopupMenuItem<ConferenceItem>(
+                  //菜单项
+                  value: ConferenceItem.AddMember,
+                  child: Text('添加成员'),
+                ),
+                const PopupMenuItem<ConferenceItem>(
+                  value: ConferenceItem.LockConference,
+                  child: Text('锁定会议'),
+                ),
+                const PopupMenuItem<ConferenceItem>(
+                  value: ConferenceItem.ModifyLayout,
+                  child: Text('修改布局'),
+                ),
+                const PopupMenuItem<ConferenceItem>(
+                  value: ConferenceItem.TurnoffAll,
+                  child: Text('挂断所有'),
+                ),
+              ],
             ),
           ),
         ),

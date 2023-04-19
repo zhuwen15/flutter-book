@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
             child: const Icon(Icons.add),
             onPressed: () {
               //点击回调事件 弹出一句提示语句
-              Scaffold.of(context).showSnackBar(SnackBar(
+              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                 //提示信息内容部分
                 content: Text("显示SnackBar"),
               ));

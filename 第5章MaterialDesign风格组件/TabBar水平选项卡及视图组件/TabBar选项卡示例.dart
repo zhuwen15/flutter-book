@@ -40,7 +40,7 @@ class TabBarSample extends StatelessWidget {
 
 //视图项数据
 class ItemView {
-  const ItemView({ this.title, this.icon });//构造方法 传入标题及图标
+  const ItemView({ required this.title, required this.icon });//构造方法 传入标题及图标
   final String title;//标题
   final IconData icon;//图标
 }
@@ -57,7 +57,7 @@ const List<ItemView> items = const <ItemView>[
 
 //被选中的视图
 class SelectedView extends StatelessWidget {
-  const SelectedView({ Key key, this.item }) : super(key: key);
+  const SelectedView({ super.key, required this.item });
 
   //视图数据
   final ItemView item;
@@ -65,7 +65,7 @@ class SelectedView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //获取文本主题样式
-    final TextStyle textStyle = Theme.of(context).textTheme.display1;
+    final TextStyle? textStyle = Theme.of(context).textTheme.displaySmall;
     //添加卡片组件 展示有质感
     return Card(
       //卡片颜色
@@ -75,7 +75,7 @@ class SelectedView extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,//垂直方向最小化处理
           crossAxisAlignment: CrossAxisAlignment.center,//水平方向居中对齐
           children: <Widget>[
-            Icon(item.icon, size: 128.0, color: textStyle.color),
+            Icon(item.icon, size: 128.0, color: textStyle?.color ?? Colors.red),
             Text(item.title, style: textStyle),
           ],
         ),
