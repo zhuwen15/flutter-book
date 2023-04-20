@@ -31,11 +31,11 @@ class _MyPageState extends State<MyPage> {
           //选项卡项 包含图标及文字
           BottomNavigationBarItem(
             icon: Icon(CupertinoIcons.home),
-            title: Text('主页'),
+            label: '主页',
           ),
           BottomNavigationBarItem(
             icon: Icon(CupertinoIcons.conversation_bubble),
-            title: Text('聊天'),
+            label: '聊天',
           ),
         ],
       ),
@@ -73,7 +73,7 @@ class HomePage extends StatelessWidget {
       child: Center(
         child: Text(
           '主页',
-          style: Theme.of(context).textTheme.button,
+          style: Theme.of(context).textTheme.labelLarge,
         ),
       ),
     );
@@ -94,7 +94,7 @@ class ChatPage extends StatelessWidget {
       child: Center(
         child: Text(
           '聊天面板',
-          style: Theme.of(context).textTheme.button,
+          style: Theme.of(context).textTheme.labelLarge,
         ),
       ),
     );
