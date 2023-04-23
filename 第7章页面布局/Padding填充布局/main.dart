@@ -19,6 +19,7 @@ class LayoutDemo extends StatelessWidget {
         child: Container(
           width: 300.0,
           height: 300.0,
+          alignment: Alignment.topLeft,
           //容器内边距上下左右设置为60.0
           padding: EdgeInsets.all(6.0),
           //添加边框
@@ -30,20 +31,23 @@ class LayoutDemo extends StatelessWidget {
             ),
           ),
           //添加容器 内框
-          child: Container(
-            width: 200.0,
-            height: 200.0,
-            //添加边框
-            decoration: BoxDecoration(
-              color: Colors.white,
-              border: Border.all(
-                color: Colors.blue,
-                width: 8.0,
-              ),
-            ),
-            //添加图标
-            child: FlutterLogo(),
-          ),
+          child: SizedBox(
+              width: 200.0,
+              height: 200.0,
+              child: Container(
+                width: 200.0,
+                height: 200.0,
+                //添加边框
+                decoration: BoxDecoration(
+                  color: Colors.yellow,
+                  border: Border.all(
+                    color: Colors.blue,
+                    width: 8.0,
+                  ),
+                ),
+                //添加图标
+                child: FlutterLogo(),
+              )),
         ),
       ),
     );
