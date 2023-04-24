@@ -13,9 +13,9 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   //测试数据
   List<Client> clients = [
-    Client(name: "张三", age: 20, sex: false),
-    Client(name: "李四", age: 22, sex: true),
-    Client(name: "王五", age: 28, sex: false),
+    Client(name: "张三", age: 20, sex: 0, id: 0001),
+    Client(name: "李四", age: 22, sex: 1, id: 0002),
+    Client(name: "王五", age: 28, sex: 0, id: 0003),
   ];
 
   @override
@@ -27,13 +27,15 @@ class _MyAppState extends State<MyApp> {
         future: DBProvider.db.getAllClients(),
         builder: (BuildContext context, AsyncSnapshot<List<Client>> snapshot) {
           //如果有数据用列表展示
-          if (snapshot.hasData) {
+          List<Client> data = snapshot.data ?? [];
+          if (data.isNotEmpty) {
+
             return ListView.builder(
               //数据项个数 对应返回的表记录的条数
-              itemCount: snapshot.data.length,
+              itemCount: data.length,
               itemBuilder: (BuildContext context, int index) {
                 //数据项Client对象
-                Client item = snapshot.data[index];
+                Client item = data[index];
                 //滑动删除组件
                 return Dismissible(
                   key: UniqueKey(),
@@ -48,13 +50,13 @@ class _MyAppState extends State<MyApp> {
                     title: Text(item.name.toString()),
                     leading: Text(item.id.toString()),
                     trailing: Checkbox(
-                      onChanged: (bool value) {
+                      onChanged: (bool? value) {
                         //更新性别
                         DBProvider.db.updateSex(item);
                         setState(() {});
                       },
                       //显示性别
-                      value: item.sex,
+                      value: item.sex == 1,
                     ),
                   ),
                 );

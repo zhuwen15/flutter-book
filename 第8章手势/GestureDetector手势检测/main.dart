@@ -16,7 +16,7 @@ class MyButton extends StatelessWidget{
       onTap: (){
         //底部消息揭示
         final snackBar = new SnackBar(content: new Text("你已按下"),);
-        Scaffold.of(context).showSnackBar(snackBar);
+        ScaffoldMessenger.of(context).showSnackBar(snackBar);
       },
       //添加容器接收触摸动作
       child: new Container(

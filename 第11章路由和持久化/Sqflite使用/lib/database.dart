@@ -7,20 +7,20 @@ import 'package:sqflite/sqflite.dart';
 
 //数据库操作封装类
 class DBProvider {
-  DBProvider._();
+  //DBProvider._();
 
-  static final DBProvider db = DBProvider._();
+  static final DBProvider db = DBProvider();
 
-  Database _database;
+  Database? _database;
 
   //获取Database对象
   Future<Database> get database async {
     //使用单例模式创建Database对象
     if (_database != null) {
-      return _database;
+      return _database!;
     }
     _database = await initDB();
-    return _database;
+    return _database!;
   }
 
   //初始化数据库
@@ -37,7 +37,7 @@ class DBProvider {
               "id INTEGER PRIMARY KEY,"
               "name TEXT,"
               "age INTEGER,"
-              "sex BIT"
+              "sex INTEGER"
               ")");
     });
   }
@@ -47,7 +47,7 @@ class DBProvider {
     final db = await database;
     //获取表中最大的id再加1作为新的id
     var table = await db.rawQuery("SELECT MAX(id)+1 as id FROM Client");
-    int id = table.first["id"];
+    int id = (table.first["id"] as int?) ?? 0;
     //向表中插入一条数据
     var raw = await db.rawInsert(
         "INSERT Into Client (id,name,age,sex)"
@@ -63,7 +63,7 @@ class DBProvider {
         id: client.id,
         name: client.name,
         age: client.age,
-        sex: !client.sex);
+        sex: client.sex == 0 ? 1 : 0);
     //更新当前Client的性别
     var res = await db.update("Client", newClient.toMap(),
         where: "id = ?", whereArgs: [client.id]);

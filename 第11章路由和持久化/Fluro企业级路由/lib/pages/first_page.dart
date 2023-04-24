@@ -12,7 +12,7 @@ class FirstPage extends StatelessWidget {
         title: Text("Fluro路由导航示例"),
       ),
       body: Center(
-        child: RaisedButton(
+        child: ElevatedButton(
           //点击处理
           onPressed: () {
             _navigateToSecondPage(context);

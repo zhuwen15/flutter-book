@@ -26,7 +26,7 @@ class PersistentDemoState extends State<PersistentDemo> {
   //实例化本地存储对象
   Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
   //呢称及选择语言的值
-  var controller = TextEditingController();
+  TextEditingController? controller = TextEditingController();
   bool value_dart = false;
   bool value_js = false;
   bool value_java = false;
@@ -54,7 +54,7 @@ class PersistentDemoState extends State<PersistentDemo> {
 
     //获取到缓存中的值后，使用setState更新界面信息
     setState(() {
-      controller.text = (value_nickname == null ? "" : value_nickname);
+      controller?.text = (value_nickname == null ? "" : value_nickname);
       this.value_dart = (value_dart == null ? false : value_dart);
       this.value_js = (value_js == null ? false : value_js);
       this.value_java = (value_java == null ? false : value_java);
@@ -135,7 +135,7 @@ class PersistentDemoState extends State<PersistentDemo> {
               MaterialButton(
                 child: Text('保存'),
                 onPressed: () {
-                  saveInfo(controller.text);
+                  saveInfo(controller?.text ?? "");
                 },
               ),
             ],

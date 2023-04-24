@@ -51,7 +51,7 @@ class LinePainter extends CustomPainter {
           Offset(40.0, 90.0),
           Offset(100.0, 100.0),
           Offset(300.0, 350.0),
-          Offset(400.0, 80.0),
+          Offset(320.0, 80.0),
           Offset(200.0, 200.0),
         ],
         _paint..color = Colors.grey);

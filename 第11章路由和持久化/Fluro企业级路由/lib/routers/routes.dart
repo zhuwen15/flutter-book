@@ -11,13 +11,13 @@ class Routes{
   static String secondPage = '/secondPage';
 
   //配置路由对象
-  static void configureRoutes(Router router){
+  static void configureRoutes(FluroRouter router){
 
     //没有找到路由的回调方法
     router.notFoundHandler = Handler(
-      handlerFunc: (BuildContext context,Map<String,List<String>> params){
-        print('error::: router 没有找到');
-      }
+        handlerFunc: (BuildContext? context, Map<String,List<String>> params){
+          print('error::: router 没有找到');
+        }
     );
 
     //定义第二页面路由的Handler

@@ -27,7 +27,7 @@ class SecondPage extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: RaisedButton(
+              child: ElevatedButton(
                 onPressed: () {
                   //出栈带上参数 返回至第一个页面
                   Navigator.pop(context, '第二个页面返回参数($goodId)');

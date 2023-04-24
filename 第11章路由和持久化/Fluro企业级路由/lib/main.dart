@@ -15,11 +15,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
 
     //创建路由对象
-    final router = Router();
+    final router =  Application.router;
     //配置路由集Routes的路由对象
     Routes.configureRoutes(router);
-    //指定Application的路由对象
-    Application.router = router;
 
     return Container(
       child: MaterialApp(
@@ -35,8 +33,3 @@ class MyApp extends StatelessWidget {
 
 
 }
-
-
-
-
-

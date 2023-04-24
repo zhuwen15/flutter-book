@@ -15,28 +15,32 @@ class MyApp extends StatelessWidget {
           ),
         ),
         body: Center(
-          child: ClipRect(
-            //指定自定义Clipper
-            clipper: RectClipper(),
-            child: SizedBox(
-              width: 300.0,
-              height:300.0,
-              child: Image.asset("images/8.jpeg",fit: BoxFit.fill,),
-            ) ,
-          ),
-        ),
+            child: Stack(alignment: AlignmentDirectional.topStart, children: [
+              Container(color: Colors.red, width: 300, height: 300),
+              ClipRect(
+                //指定自定义Clipper
+                clipper: RectClipper(),
+                child: SizedBox(
+                  width: 300.0,
+                  height: 300.0,
+                  child: Image.asset(
+                    "images/8.jpeg",
+                    fit: BoxFit.fill,
+                  ),
+                ),
+              ),
+            ])),
       ),
     );
   }
 }
 
 //自定义Clipper,类型为Rect
-class RectClipper extends CustomClipper<Rect>{
-
+class RectClipper extends CustomClipper<Rect> {
   //重写获取剪裁范围
   @override
   Rect getClip(Size size) {
-    return Rect.fromLTRB(100.0, 100.0, size.width - 100.0,  size.height- 100.0);
+    return Rect.fromLTRB(100.0, 100.0, size.width - 100.0, size.height - 100.0);
   }
 
   //重写是否重新剪裁
@@ -44,5 +48,4 @@ class RectClipper extends CustomClipper<Rect>{
   bool shouldReclip(CustomClipper<Rect> oldClipper) {
     return true;
   }
-
 }

@@ -4,24 +4,38 @@ import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 
 void main() {
-  runApp(MaterialApp(
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return const MaterialApp(
       title: '文件存储示例',
       home: LogInfo(),
-    ),
-  );
+    );
+  }
 }
 
 class LogInfo extends StatefulWidget {
+  const LogInfo({super.key});
+
   @override
   LogInfoState createState() => LogInfoState();
 }
+
 class LogInfoState extends State<LogInfo> {
   //日志id
-  int log_id = 0;
+  int logId = 0;
+
   //日志内容
-  String log_info = '';
+  String logInfo = '';
+
   //文件对象
-  File file;
+  File? file;
 
   @override
   void initState() {
@@ -29,19 +43,18 @@ class LogInfoState extends State<LogInfo> {
     //读取日志信息
     readLogInfo().then((String value) {
       setState(() {
-        log_info = value;
+        logInfo = value;
       });
     });
   }
+
   //获取文件对象
   Future<File> getFile() async {
     //获取文件所在目录路径
     String dir = (await getApplicationDocumentsDirectory()).path;
     //创建文件
-    if(file == null){
-      file = File('$dir/log.txt');
-    }
-    return file;
+    file ??= File('$dir/log.txt');
+    return file!;
   }
 
   //读取日志信息
@@ -57,29 +70,37 @@ class LogInfoState extends State<LogInfo> {
   }
 
   //写入日志信息
-  Future<Null> writeLogInfo() async {
+  Future<void> writeLogInfo() async {
     //日志id号自增
     setState(() {
-      log_id++;
+      logId++;
     });
     //getFile:获取File对象
     //writeAsString:写入数据
     //FileMode:文件写入模式为追加模式这样就可以把每次写入的信息记录起来
     //两个await是因为有两个异步操作
-    await (await getFile()).writeAsString('日志信息:$log_id\n',mode: FileMode.append);
+    // await (await getFile())
+    //     .writeAsString('日志信息:$logId\n', mode: FileMode.write);
+    await (await getFile())
+        .writeAsString('日志信息:$logId\n', mode: FileMode.append);
+    readLogInfo().then((String value) {
+      setState(() {
+        logInfo = value;
+      });
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('文件存储示例')),
+      appBar: AppBar(title: const Text('文件存储示例')),
       body: Center(
-        child: Text('$log_info'),
+        child: Text(logInfo),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: writeLogInfo,
         tooltip: '写入日志',
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
     );
   }
