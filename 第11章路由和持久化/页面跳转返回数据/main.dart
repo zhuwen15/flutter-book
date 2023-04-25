@@ -26,7 +26,7 @@ class FirstPage extends StatelessWidget {
 class RouteButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return RaisedButton(
+    return ElevatedButton(
       onPressed: () {
         _navigateToSecondPage(context);
       },
@@ -42,7 +42,7 @@ class RouteButton extends StatelessWidget {
       MaterialPageRoute(builder: (context) => SecondPage()),
     );
     //读取并显示返回值
-    Scaffold.of(context).showSnackBar(SnackBar(content: Text("$result")));
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("$result")));
   }
 }
 
@@ -60,7 +60,7 @@ class SecondPage extends StatelessWidget {
           children: <Widget>[
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: RaisedButton(
+              child: ElevatedButton(
                 onPressed: () {
                   //出栈带上参数 返回到上一个页面
                   Navigator.pop(context, 'hi google');
@@ -70,10 +70,10 @@ class SecondPage extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: RaisedButton(
+              child: ElevatedButton(
                 onPressed: () {
                   //出栈带上参数 返回到上一个页面
-                  Navigator.pop(context, 'hi flutter');
+                  Navigator.pop(context, {'hi flutter': '2467423'});
                 },
                 child: Text('hi flutter'),
               ),

@@ -8,9 +8,9 @@ class FontAnimation extends StatefulWidget {
 //TickerProvider提供动画驱动
 class _FontAnimation extends State<FontAnimation> with SingleTickerProviderStateMixin {
   //补间动画
-  Animation<double> tween;
+  late Animation<double> tween;
   //动画控制对象
-  AnimationController controller;
+  late AnimationController controller;
   /*初始化状态*/
   initState() {
     super.initState();

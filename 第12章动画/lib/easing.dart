@@ -9,9 +9,9 @@ class EasingAnimation extends StatefulWidget {
 
 class _EasingAnimationState extends State<EasingAnimation> with TickerProviderStateMixin {
   //动画控制器
-  AnimationController _controller;
+  late AnimationController _controller;
   //补间动画
-  Animation _animation;
+  late Animation _animation;
 
   @override
   void initState() {

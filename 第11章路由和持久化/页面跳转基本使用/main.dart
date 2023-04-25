@@ -16,7 +16,7 @@ class FirstScreen extends StatelessWidget {
         title: Text('导航页面示例'),
       ),
       body: Center(
-        child: RaisedButton(
+        child: ElevatedButton(
           child: Text('查看商品详情页面'),
           onPressed: (){
             //压栈处理 路由至第二个页面
@@ -38,7 +38,7 @@ class SecondScreen extends StatelessWidget {
         title: Text("导航页面示例"),
       ),
       body: Center(
-        child: RaisedButton(
+        child: ElevatedButton(
           onPressed: (){
             //出栈处理 返回至上一个页面
             Navigator.pop(context);

@@ -23,7 +23,7 @@ void main() {
 class ProductList extends StatelessWidget {
   final List<Product> products;
 
-  ProductList({Key key, @required this.products}) : super(key: key);
+  ProductList({super.key, required this.products});
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +58,7 @@ class ProductDetail extends StatelessWidget {
   final Product product;
 
   //构造方法 将传入的商品数据赋值给product
-  ProductDetail({Key key, @required this.product}) : super(key: key);
+  ProductDetail({super.key, required this.product});
 
   @override
   Widget build(BuildContext context) {

@@ -9,11 +9,11 @@ class MaskAnimation extends StatefulWidget {
 
 class _MaskAnimationState extends State<MaskAnimation> with TickerProviderStateMixin {
   //动画控制器
-  AnimationController _controller;
+  late AnimationController _controller;
   //容器宽高值补间对象
-  Animation<double> transitionTween;
+  late Animation<double> transitionTween;
   //容器边框弧度补间对象
-  Animation<BorderRadius> borderRadius;
+  late Animation<BorderRadius?> borderRadius;
 
   @override
   void initState() {
@@ -65,7 +65,7 @@ class _MaskAnimationState extends State<MaskAnimation> with TickerProviderStateM
     return AnimatedBuilder(
       //动画控制器
       animation: _controller,
-      builder: (BuildContext context, Widget child) {
+      builder: (BuildContext context, Widget? child) {
         return Scaffold(
           appBar: AppBar(
             title: Text('遮罩动画'),

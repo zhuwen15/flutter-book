@@ -9,9 +9,9 @@ class ValueAnimation extends StatefulWidget {
 
 class _ValueAnimationState extends State<ValueAnimation> with TickerProviderStateMixin {
   //动画控制器
-  AnimationController controller;
+  late AnimationController controller;
   //补间对象
-  Animation animation;
+  late Animation<int> animation;
 
   @override
   void initState() {
@@ -19,7 +19,7 @@ class _ValueAnimationState extends State<ValueAnimation> with TickerProviderStat
     //创建动画控制器 时长设置为1秒
     controller = AnimationController(duration: const Duration(milliseconds: 1000), vsync: this);
     //创建非线性动画 让数字在切换时有一种动感
-    final Animation curve = CurvedAnimation(parent: controller, curve: Curves.easeOut);
+    final Animation<double> curve = CurvedAnimation(parent: controller, curve: Curves.easeOut);
     //创建整型补间对象 产生从0到10的数字
     animation = IntTween(begin: 0, end: 10).animate(curve)..addStatusListener((status) {
         if (status == AnimationStatus.completed) {
@@ -38,7 +38,7 @@ class _ValueAnimationState extends State<ValueAnimation> with TickerProviderStat
     controller.forward();
     return AnimatedBuilder(
         animation: controller,
-        builder: (BuildContext context, Widget child) {
+        builder: (BuildContext context, Widget? child) {
           return Scaffold(
               appBar: AppBar(
                 title: Text('数字变化动画'),
